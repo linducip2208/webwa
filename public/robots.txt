@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /$
+Allow: /harga
+Allow: /docs
+Allow: /blog
+Allow: /best-whatsapp-gateway
+Allow: /whatsapp-gateway-
+Allow: /alternatif-
+Allow: /bandingkan/
+Disallow: /dashboard
+Disallow: /devices
+Disallow: /api-keys
+Disallow: /send
+Disallow: /logs
+Disallow: /admin
+Disallow: /api
+Disallow: /whatsapp
+Disallow: /webhooks
+
+Sitemap: /sitemap.xml
