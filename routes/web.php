@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\ApiKeyController;
 use App\Http\Controllers\AutoReplyController;
 use App\Http\Controllers\Auth\AuthController;
@@ -104,6 +105,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::put('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
     Route::get('/devices', [AdminController::class, 'devices'])->name('devices');
     Route::get('/logs', [AdminController::class, 'logs'])->name('logs');
+
+    // Pengaturan daemon auto-reply + config deploy
+    Route::get('/settings', [AdminSettingsController::class, 'index'])->name('settings');
+    Route::put('/settings', [AdminSettingsController::class, 'update'])->name('settings.update');
+    Route::post('/settings/run-ensure', [AdminSettingsController::class, 'runEnsure'])->name('settings.run-ensure');
+    Route::post('/settings/run-listen', [AdminSettingsController::class, 'runListen'])->name('settings.run-listen');
 });
 
 /*

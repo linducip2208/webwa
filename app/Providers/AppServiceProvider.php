@@ -2,10 +2,7 @@
 
 namespace App\Providers;
 
-use App\Listeners\AutoReplyListener;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Kstmostofa\LaravelWhatsApp\Events\Web\MessageReceived;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Event::listen(MessageReceived::class, AutoReplyListener::class);
+        // AutoReplyListener tidak didaftarkan manual di sini: Laravel meng-auto-discover
+        // listener di app/Listeners (AutoReplyListener@handle untuk MessageReceived).
+        // Mendaftarkannya manual juga akan membuat listener terpanggil 2x → bot membalas
+        // dua kali per pesan masuk.
     }
 }
